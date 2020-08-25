@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import '../../components/../bootstrap.css'
 import './todo.css'
 
 class Login extends Component{
@@ -17,14 +18,17 @@ class Login extends Component{
     }
     render(){
         return(
-            <div className="loginComponent">
-                {this.state.hasLoginFailed && <div>Invalid credentials</div>}
-                {this.state.showSuccesMessage && <div>Login Succesful!</div>}
-               {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>
-                <ShowSuccesMessage showSuccesMessage={this.state.showSuccesMessage}/>*/}
-               User <input type="text" name="user" className="user" value={this.state.user} onChange={this.handleChange}/>
-               Password<input type="password" name="password" className="password" value={this.state.password} onChange={this.handleChange}/> 
-               <button name="btn-login" onClick={this.buttonClicked}>Login</button>
+            <div>
+                <h1>Login</h1>
+                <div className="container">                    
+                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid credentials</div>}
+                    {/*this.state.showSuccesMessage && <div>Login Succesful!</div>*/}
+                    {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>
+                    <ShowSuccesMessage showSuccesMessage={this.state.showSuccesMessage}/>*/}
+                    User <input type="text" name="user" className="user" value={this.state.user} onChange={this.handleChange}/>
+                    Password<input type="password" name="password" className="password" value={this.state.password} onChange={this.handleChange}/> 
+                    <button className="btn btn-success" name="btn-login" onClick={this.buttonClicked}>Login</button>
+                </div>
             </div>
         )
     }
@@ -38,9 +42,11 @@ class Login extends Component{
 
    buttonClicked(){
       if(this.state.user==='alex' && this.state.password==='nirv'){
-          this.setState({showSuccesMessage:true})
-          this.setState({hasLoginFailed:false})
+             this.props.history.push("/welcome")
+        //   this.setState({showSuccesMessage:true})
+        //   this.setState({hasLoginFailed:false})
       }else{
+            // this.props.history.push("/")
             this.setState({showSuccesMessage:false})
             this.setState({hasLoginFailed:true})
           }      
