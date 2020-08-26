@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
+import './AuthenticationService.js'
 import '../../components/../bootstrap.css'
 import './todo.css'
+import AuthenticationService from './AuthenticationService.js';
 
 class Login extends Component{
     constructor(){
@@ -42,6 +44,7 @@ class Login extends Component{
 
    buttonClicked(){
       if(this.state.user==='alex' && this.state.password==='nirv'){
+            AuthenticationService.logSuccessFull(this.state.user,this.state.password)
              this.props.history.push("/welcome")
         //   this.setState({showSuccesMessage:true})
         //   this.setState({hasLoginFailed:false})
