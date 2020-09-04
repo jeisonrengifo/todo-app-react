@@ -42,17 +42,22 @@ class Login extends Component{
        //console.log(event.target.value)
    }
 
-   buttonClicked(){
-      if(this.state.user==='alex' && this.state.password==='nirv'){
-            AuthenticationService.logSuccessFull(this.state.user,this.state.password)
-             this.props.history.push("/welcome")
-        //   this.setState({showSuccesMessage:true})
-        //   this.setState({hasLoginFailed:false})
-      }else{
-            // this.props.history.push("/")
-            this.setState({showSuccesMessage:false})
-            this.setState({hasLoginFailed:true})
-          }      
+   buttonClicked(){     
+
+          AuthenticationService.executeBasicAuthentication(this.state.user,this.state.password)
+          .then(
+                ()=>{
+                    AuthenticationService.logSuccessFull(this.state.user,this.state.password)
+                    this.props.history.push("/welcome")
+                }
+          )
+          .catch(
+              ()=>{
+                    this.setState({showSuccesMessage:false})
+                    this.setState({hasLoginFailed:true})
+              }
+
+          )
           
    }  
    
