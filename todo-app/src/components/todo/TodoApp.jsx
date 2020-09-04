@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import Login from './Login'
-import { render } from '@testing-library/react'
-import { BrowserRouter, Route, Switch, Link} from 'react-router-dom'
+import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import './WelcomeComponent'
 import Welcome from './WelcomeComponent'
 import ErrorComponent from './ErrorComponent'
@@ -10,6 +9,7 @@ import FooterComponent from './FooterComponent'
 import HeaderComponent from './HeaderComponent'
 import LogOutComponent from './LogOutComponent'
 import AuthenticatedRoute from './AuthenticatedRoute'
+import TodoComponent from './TodoComponent'
 
 
 
@@ -25,6 +25,7 @@ class TodoApp extends Component{
                             <Route path="/" exact component={Login}/>
                             <Route path="/login"  component={Login}/>
                             <AuthenticatedRoute path="/welcome" component={Welcome}/> 
+                            <AuthenticatedRoute path="/todo/:id" component={TodoComponent}/>
                             <AuthenticatedRoute path="/todo" component={TodoListComponent}/> 
                             <AuthenticatedRoute path="/logout" component={LogOutComponent}/>                          
                             <Route component={ErrorComponent}></Route>
